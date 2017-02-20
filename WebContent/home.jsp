@@ -5,48 +5,38 @@
 <%
 	String username = request.getParameter("username");
 	if (username == null) {
-%><jsp:forward
-	page="index.jsp?err1=Sorry! Please Login First ! "></jsp:forward>
-<%
-	}
-	String name=null;
-	Connection con = null;
-	PreparedStatement ps = null;
-	try {
+		response.sendRedirect("index.jsp?err=User already exist ! Try Again");
+	} else {
+		String name = null;
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
 
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kdb?user=kdbuser&password=kdbuser");
-		ps = con.prepareStatement("select name from users where username=? ");
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kdb?user=kdbuser&password=kdbuser");
+			ps = con.prepareStatement("select name from users where username=? ");
 
-		//ps.setInt(1,2);
-		ps.setString(1, username);
+			//ps.setInt(1,2);
+			ps.setString(1, username);
 
+			ResultSet rs = ps.executeQuery();
+			boolean flag = rs.next();
+			//System.out.println(rs.getString("username"));
+			if (!flag) {
+				response.sendRedirect("index.jsp?err=User already exist ! Try Again");
+			}
 
-		ResultSet rs = ps.executeQuery();
-		boolean flag = rs.next();
-		//System.out.println(rs.getString("username"));
-		if (!flag) {
-%><jsp:forward
-	page="index.jsp?err1=Sorry! Please Login First ! "></jsp:forward>
-<%
-	}
-		
-		name=rs.getString("name");
-	} catch (SQLException e2) {
-%><jsp:forward
-	page="index.jsp?err1=Sorry! Please Login First ! "></jsp:forward>
-<%
-	} finally {
-		if (con != null) {
-			con.close();
+			name = rs.getString("name");
+		} catch (SQLException e2) {
+			response.sendRedirect("index.jsp?err=User already exist ! Try Again");
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+			if (ps != null) {
+				ps.close();
+			}
 		}
-		if (ps != null) {
-			ps.close();
-		}
-	}
-
-
-	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +63,7 @@
 			<div>
 				<h4>
 					<%
-						out.println("<h2>"+name+"<small> <small>@"+username+"</small></small></h2>");
+						out.println("<h2>" + name + "<small> <small>@" + username + "</small></small></h2>");
 					%>
 				</h4>
 				<!-- Nav tabs -->
@@ -101,15 +91,15 @@
 
 					</div>
 					<div role="tabpanel" class="tab-pane" id="profile"><jsp:include
-							page="profile.jsp" /></div>
+							page="profile.jsp?username=<%=username%>" /></div>
 					<div role="tabpanel" class="tab-pane" id="java"><jsp:include
-							page="java.jsp?username=<%=username %>" /></div>
+							page="java.jsp?username=<%=username%>" /></div>
 					<div role="tabpanel" class="tab-pane" id="javaC"><jsp:include
-							page="javac.jsp" /></div>
+							page="javac.jsp?username=<%=username%>" /></div>
 					<div role="tabpanel" class="tab-pane" id="sql"><jsp:include
-							page="sql.jsp" /></div>
+							page="sql.jsp?username=<%=username%>" /></div>
 					<div role="tabpanel" class="tab-pane" id="sqlC"><jsp:include
-							page="sqlC.jsp" /></div>
+							page="sqlC.jsp?username=<%=username%>" /></div>
 
 				</div>
 
@@ -118,7 +108,7 @@
 
 
 		</div>
-</div>
+	</div>
 
 
 
@@ -126,8 +116,11 @@
 
 
 
-		<script src="resource/jquery/jquery-3.1.1.min.js"></script>
-		<script src="resource/bootstrap/js/bootstrap.min.js"></script>
-		<script src="otherResource/validation.js"></script>
+	<script src="resource/jquery/jquery-3.1.1.min.js"></script>
+	<script src="resource/bootstrap/js/bootstrap.min.js"></script>
+	<script src="otherResource/validation.js"></script>
 </body>
 </html>
+<%
+	}
+%>

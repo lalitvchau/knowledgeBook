@@ -3,6 +3,7 @@
 	String username = null;
 	Connection con = null;
 	PreparedStatement ps = null;
+	boolean flag=false;
 	try {
 
 		username = request.getParameter("username");
@@ -17,18 +18,12 @@
 		ps.setString(2, password);
 
 		ResultSet rs = ps.executeQuery();
-		boolean flag = rs.next();
+		 flag = rs.next();
 		//System.out.println(rs.getString("username"));
-		if (!flag) {
-%><jsp:forward
-	page="index.jsp?err1=Username or password wrong ! Try Again "></jsp:forward>
-<%
-	}
-	} catch (SQLException e2) {
-%><jsp:forward
-	page="index.jsp?err1=Username or password wrong ! Try Again "></jsp:forward>
-<%
-	} finally {
+		
+	  } catch (SQLException e2) {
+		response.sendRedirect("index.jsp?err1=Username or password wrong ! Try Again");
+	  } finally {
 		if (con != null) {
 			con.close();
 		}
@@ -36,6 +31,10 @@
 			ps.close();
 		}
 	}
+	if (!flag) {
+		response.sendRedirect("index.jsp?err1=Username or password wrong ! Try Again");
 
+	}else{response.sendRedirect("home.jsp?username=" + username);}
+	
 %>
-<jsp:forward page="home.jsp?username=<%=username %>"></jsp:forward>
+

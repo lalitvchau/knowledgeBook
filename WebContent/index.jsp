@@ -82,23 +82,26 @@
 								</div>
 								<div class="modal-body">
 									<div>
-										<label for="name">Name</label> <input type="text"
+										 <input type="text"
 											class="form-control" name="name" placeholder="Name">
 									</div>
+									<br>
 									<div>
-										<label for="email">Email Address or Username</label> <input
+										<input
 											type="email" class="form-control" name="email"
-											placeholder="Email">
+											placeholder="Email or Username">
 									</div>
+									<br>
 									<div class="form-group">
-										<label for="password">Password</label> <input type="password"
+										<input type="password"
 											class="form-control" name="password"
-											placeholder="Conform Password">
-									</div>
-									<div class="form-group">
-										<label for="password1">Conform Password</label> <input
-											type="password" class="form-control" name="password1"
 											placeholder="Password">
+									</div>
+									
+									<div class="form-group">
+										 <input
+											type="password" class="form-control" name="password1"
+											placeholder=" Conform Password">
 									</div>
 									<div class="radio">
 										<label> <input type="radio" name="gender" value="male"
@@ -156,12 +159,13 @@
 								</div>
 								<div class="modal-body">
 									<div>
-										<label for="email">Email Address or Username</label> <input
+										 <input
 											type="email" class="form-control" name="username"
-											placeholder="Email">
+											placeholder="Email or Username">
 									</div>
+									<br>
 									<div class="form-group">
-										<label for="password">Password</label> <input type="password"
+										<input type="password"
 											class="form-control" name="pass" placeholder="Password">
 									</div>
 								</div>

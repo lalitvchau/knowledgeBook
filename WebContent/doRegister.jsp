@@ -26,8 +26,7 @@
 		int s = ps.executeUpdate();
 
 	} catch (SQLException e2) {
-%><jsp:forward page="index.jsp?err=User already exist ! Try Again "></jsp:forward>
-<%
+		response.sendRedirect("index.jsp?err=User already exist ! Try Again");
 	} finally {
 		if (con != null) {
 			con.close();
@@ -36,5 +35,5 @@
 			ps.close();
 		}
 	}
+	response.sendRedirect("succes.jsp");
 %>
-<jsp:forward page="home.jsp?username=<%=username%>"></jsp:forward>

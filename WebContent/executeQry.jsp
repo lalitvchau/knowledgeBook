@@ -12,7 +12,7 @@
 	try {
 
 		username = request.getParameter("username");
-		qry = request.getParameter("qryArea");
+		qry = request.getParameter("qryArea");		
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/userDb?user=kdbuser&password=kdbuser");
 		ps = con.createStatement();
@@ -87,5 +87,5 @@
 			ps1.close();
 		}
 	}
+	response.sendRedirect("rslt.jsp?username=" + username);
 %>
-<jsp:forward page="rslt.jsp?username=<%=username%>>"></jsp:forward>
