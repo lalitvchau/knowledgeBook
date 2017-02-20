@@ -5,8 +5,7 @@
 <%
 	String username = request.getParameter("username");
 	if (username == null) {
-%><jsp:forward page="index.jsp?err1=Sorry! Please Login First ! "></jsp:forward>
-<%
+		response.sendRedirect("index.jsp?err=User already exist ! Try Again");
 	}
 %>
 
@@ -709,65 +708,396 @@
 
 
 
-							<p style="text-align: justify; color: #767676;">
-								<b>A class can contain any of the following variable types.</b>
-							</p>
-							<p style="text-align: justify; color: #767676;">
-								<b>Local variables −</b> Variables defined inside methods,
-								constructors or blocks are called local variables. The variable
-								will be declared and initialized within the method and the
-								variable will be destroyed when the method has completed.
-							</p>
-							<p style="text-align: justify; color: #767676;">
+								<p style="text-align: justify; color: #767676;">
+									<b>A class can contain any of the following variable types.</b>
+								</p>
+								<p style="text-align: justify; color: #767676;">
+									<b>Local variables −</b> Variables defined inside methods,
+									constructors or blocks are called local variables. The variable
+									will be declared and initialized within the method and the
+									variable will be destroyed when the method has completed.
+								</p>
+								<p style="text-align: justify; color: #767676;">
 
-								<b>Instance variables −</b> Instance variables are variables
-								within a class but outside any method. These variables are
-								initialized when the class is instantiated. Instance variables
-								can be accessed from inside any method, constructor or blocks of
-								that particular class.
-							</p>
-							<p style="text-align: justify; color: #767676;">
-								<b> Class variables − </b>Class variables are variables declared
-								within a class, outside any method, with the static keyword.
-							</p>
+									<b>Instance variables −</b> Instance variables are variables
+									within a class but outside any method. These variables are
+									initialized when the class is instantiated. Instance variables
+									can be accessed from inside any method, constructor or blocks
+									of that particular class.
+								</p>
+								<p style="text-align: justify; color: #767676;">
+									<b> Class variables − </b>Class variables are variables
+									declared within a class, outside any method, with the static
+									keyword.
+								</p>
+							</div>
+							<p style="text-align: justify; color: #767676;">A class can
+								have any number of methods to access the value of various kinds
+								of methods. In the above example, barking(), hungry() and
+								sleeping() are methods. Following are some of the important
+								topics that need to be discussed when looking into classes of
+								the Java Language.</p>
+
+
+
 						</div>
-						<p style="text-align: justify; color: #767676;">A class can
-							have any number of methods to access the value of various kinds
-							of methods. In the above example, barking(), hungry() and
-							sleeping() are methods. Following are some of the important
-							topics that need to be discussed when looking into classes of the
-							Java Language.</p>
-							
-							
-							
 					</div>
 				</div>
+
+
+
+				<!--  Data -->
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading13">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse"
+								data-parent="#accordion" href="#collapse13"
+								aria-expanded="false" aria-controls="collapse13"> Creating
+								an Object </a>
+						</h4>
+					</div>
+					<div id="collapse13" class="panel-collapse collapse"
+						role="tabpanel" aria-labelledby="heading13">
+						<div class="panel-body">
+							<p style="text-align: justify; color: #767676;">As mentioned
+								previously, a class provides the blueprints for objects. So
+								basically, an object is created from a class. In Java, the new
+								keyword is used to create new objects.</p>
+							<p style="text-align: justify; color: #767676;">
+								<strong>Declaration −</strong> A variable declaration with a
+								variable name with an object type.
+							</p>
+							<p style="text-align: justify; color: #767676;">
+								<strong>Instantiation −</strong>The 'new' keyword is used to
+								create the object.
+							</p>
+							<p style="text-align: justify; color: #767676;">
+								<strong>Initialization −</strong> The 'new' keyword is followed
+								by a call to a constructor. This call initializes the new
+								object.
+							</p>
+
+							<!-- pg -->
+							<div class="form-group">
+								<textarea class="form-control" rows=10 disabled="disabled">public class Puppy {
+   public Puppy(String name) {
+      // This constructor has one parameter, name.
+      System.out.println("Passed Name is :" + name );
+   }
+
+   public static void main(String []args) {
+      // Following statement would create an object myPuppy
+      Puppy myPuppy = new Puppy( "tommy" );
+   }
+}</textarea>
+								<button type="button" class="btn btn-default"
+									data-toggle="modal" data-target="#prg3">Run</button>
+
+								<div class="modal " tabindex="-1" role="dialog"
+									aria-labelledby="mySmallModalLabel" id="prg3">
+									<div class="modal-dialog modal-sm" role="document">
+										<div class="modal-content">Passed Name is :tommy</div>
+									</div>
+								</div>
+							</div>
+							<!-- pg -->
+							<p style="text-align: justify; color: #767676;">
+								<strong>Accessing Instance Variables and Methods −</strong>
+								nstance variables and methods are accessed via created objects.
+								To access an instance variable, following is the fully qualified
+								path −
+							</p>
+							<p style="text-align: justify; color: #767676;">
+								/* First create an object */<br> ObjectReference = new
+								Constructor();<br> ObjectReference = new Constructor();<br>
+								/* Now call a variable as follows */<br>
+								ObjectReference.variableName;<br> /* Now you can call a
+								class method as follows */<br>
+								ObjectReference.MethodName();<br>
+							</p>
+
+							<!-- pg -->
+							<div class="form-group">
+								<textarea class="form-control" rows=10 disabled="disabled">public class Puppy {
+   public Puppy(String name) {
+      // This constructor has one parameter, name.
+      System.out.println("Passed Name is :" + name );
+   }
+
+   public static void main(String []args) {
+      // Following statement would create an object myPuppy
+      Puppy myPuppy = new Puppy( "tommy" );
+   }
+}</textarea>
+								<button type="button" class="btn btn-default"
+									data-toggle="modal" data-target="#prg4">Run</button>
+
+								<div class="modal " tabindex="-1" role="dialog"
+									aria-labelledby="mySmallModalLabel" id="prg4">
+									<div class="modal-dialog modal-sm" role="document">
+										<div class="modal-content">
+											Name chosen is :tommy<br> Puppy's age is :2<br>
+											Variable Value :2
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- pg -->
+
+
+
+						</div>
+					</div>
+				</div>
+
+				<!--  Data -->
+				<!--  Data -->
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading14">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse"
+								data-parent="#accordion" href="#collapse14"
+								aria-expanded="false" aria-controls="collapse14"> Java Basic
+								Datatypes </a>
+						</h4>
+					</div>
+					<div id="collapse14" class="panel-collapse collapse"
+						role="tabpanel" aria-labelledby="heading14">
+						<div class="panel-body">
+							<p style="text-align: justify; color: #767676;">Variables are
+								nothing but reserved memory locations to store values. This
+								means that when you create a variable you reserve some space in
+								the memory.</p>
+							<p style="text-align: justify; color: #767676;">Based on the
+								data type of a variable, the operating system allocates memory
+								and decides what can be stored in the reserved memory.
+								Therefore, by assigning different data types to variables, you
+								can store integers, decimals, or characters in these variables.
+							</p>
+							<p style="text-align: justify; color: #767676;">
+								There are two data types available in Java − <br>1.
+								Primitive Data Types <br>2. Reference/Object Data Types
+							</p>
+							<p style="text-align: justify; color: #767676;">
+								<strong>Primitive Data Types −</strong> There are eight
+								primitive datatypes supported by Java. Primitive datatypes are
+								predefined by the language and named by a keyword. Let us now
+								look into the eight primitive data types in detail.
+							</p>
+							<p style="text-align: justify; color: #767676;">
+								<strong>byte−</strong>
+							</p>
+							<ul style="text-align: justify; color: #767676;">
+								<li>Byte data type is an 8-bit signed two's complement
+									integer</li>
+								<li>Minimum value is -128 (-2^7)</li>
+								<li>Maximum value is 127 (inclusive)(2^7 -1)</li>
+								<li>Default value is 0</li>
+								<li>Byte data type is used to save space in large arrays,
+									mainly in place of integers, since a byte is four times smaller
+									than an integer.</li>
+								<li>Example: byte a = 100, byte b = -50</li>
+							</ul>
+
+							<p style="text-align: justify; color: #767676;">
+								<strong>short−</strong>
+							</p>
+							<ul style="text-align: justify; color: #767676;">
+								<li>Short data type is a 16-bit signed two's complement
+									integer</li>
+								<li>Minimum value is -32,768 (-2^15)</li>
+								<li>Maximum value is 32,767 (inclusive) (2^15 -1)</li>
+								<li>Default value is 0</li>
+								<li>Short data type can also be used to save memory as byte
+									data type. A short is 2 times smaller than an integer</li>
+								<li>Example: short s = 10000, short r = -20000</li>
+							</ul>
+							<p style="text-align: justify; color: #767676;">
+								<strong>int−</strong>
+							</p>
+							<ul style="text-align: justify; color: #767676;">
+								<li>Int data type is a 32-bit signed two's complement
+									integer.</li>
+								<li>Minimum value is - 2,147,483,648 (-2^31)</li>
+								<li>Maximum value is 2,147,483,647(inclusive) (2^31 -1)</li>
+								<li>Default value is 0</li>
+								<li>Integer is generally used as the default data type for
+									integral values unless there is a concern about memory.</li>
+								<li>Example: int a = 100000, int b = -200000</li>
+							</ul>
+							<p style="text-align: justify; color: #767676;">
+								<strong>long−</strong>
+							</p>
+							<ul style="text-align: justify; color: #767676;">
+								<li>Long data type is a 64-bit signed two's complement
+									integer.</li>
+								<li>Minimum value is -9,223,372,036,854,775,808(-2^63)</li>
+								<li>Maximum value is 9,223,372,036,854,775,807
+									(inclusive)(2^63 -1)</li>
+								<li>Default value is 0L</li>
+								<li>This type is used when a wider range than int is needed</li>
+								<li>Example: long a = 100000L, long b = -200000L</li>
+							</ul>
+							<p style="text-align: justify; color: #767676;">
+								<strong>float−</strong>
+							</p>
+							<ul style="text-align: justify; color: #767676;">
+								<li>Float data type is a single-precision 32-bit IEEE 754
+									floating point.</li>
+								<li>Minimum value is -9,223,372,036,854,775,808(-2^63)</li>
+								<li>Default value is 0.0f</li>
+								<li>Float is mainly used to save memory in large arrays of
+									floating point numbers</li>
+								<li>Example: float f1 = 234.5f</li>
+							</ul>
+							<p style="text-align: justify; color: #767676;">
+								<strong>double−</strong>
+							</p>
+							<ul style="text-align: justify; color: #767676;">
+								<li>double data type is a double-precision 64-bit IEEE 754
+									floating point</li>
+								<li>This data type is generally used as the default data
+									type for decimal values, generally the default choice</li>
+								<li>Double data type should never be used for precise
+									values such as currency</li>
+								<li>Default value is 0.0dL</li>
+								<li>This type is used when a wider range than int is needed</li>
+								<li>Example: double d1 = 123.4</li>
+							</ul>
+							<p style="text-align: justify; color: #767676;">
+								<strong>boolean−</strong>
+							</p>
+							<ul style="text-align: justify; color: #767676;">
+								<li>boolean data type represents one bit of information</li>
+								<li>There are only two possible values: true and false</li>
+								<li>This data type is used for simple flags that track
+									true/false conditions</li>
+								<li>Default value is false</li>
+								<li>Example: boolean one = true</li>
+							</ul>
+							<p style="text-align: justify; color: #767676;">
+								<strong>char−</strong>
+							</p>
+							<ul style="text-align: justify; color: #767676;">
+								<li>char data type is a single 16-bit Unicode character</li>
+								<li>Minimum value is '\u0000' (or 0)</li>
+								<li>Maximum value is '\uffff' (or 65,535 inclusive)s</li>
+								<li>Char data type is used to store any character</li>
+								<li>Example: char letterA = 'A'</li>
+							</ul>
+							<p style="text-align: justify; color: #767676;">
+								<strong>Reference Datatypes −</strong>
+							</p>
+							<ul style="text-align: justify; color: #767676;">
+								<li>Reference variables are created using defined
+									constructors of the classes. They are used to access objects.
+									These variables are declared to be of a specific type that
+									cannot be changed. For example, Employee, Puppy, etc.</li>
+								<li>Default value of any reference variable is null.</li>
+								<li>Class objects and various type of array variables come
+									under reference datatype.</li>
+								<li>A reference variable can be used to refer any object of
+									the declared type or any compatible type.</li>
+								<li>Example: Animal animal = new Animal("giraffe");</li>
+							</ul>
+
+						</div>
+					</div>
+				</div>
+
+				<!--  Data -->
+
+				<!--  Data -->
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading15">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse"
+								data-parent="#accordion" href="#collapse15"
+								aria-expanded="false" aria-controls="collapse15"> Access
+								Modifier </a>
+						</h4>
+					</div>
+					<div id="collapse15" class="panel-collapse collapse"
+						role="tabpanel" aria-labelledby="heading15">
+						<div class="panel-body">
+							<p style="text-align: justify; color: #767676;">Modifiers are
+								keywords that you add to those definitions to change their
+								meanings. Java language has a wide variety of modifiers −</p>
+							<p style="text-align: justify; color: #767676;">To use a
+								modifier, you include its keyword in the definition of a class,
+								method, or variable. The modifier precedes the rest of the
+								statement, as in the following example.</p>
+
+
+							<!-- pg -->
+							<div class="form-group">
+								<textarea class="form-control" rows=10 disabled="disabled">public class className {
+   // ...
+}
+
+private boolean myFlag;
+static final double weeks = 9.5;
+protected static final int BOXWIDTH = 42;
+
+public static void main(String[] arguments) {
+   // body of method
+}</textarea>
+</div>
+								<!-- pg -->
+								<p style="text-align: justify; color: #767676;">
+									<strong>Access Control Modifiers</strong> Java provides a
+									number of access modifiers to set access levels for classes,
+									variables, methods and constructors. The four access levels are
+								
+								</p>
+								<ul style="text-align: justify; color: #767676;">
+									<li>Visible to the package, the default. No modifiers are needed.</li>
+									<li>Visible to the class only (private).</li>
+									<li>Visible to the world (public</li>
+									<li>Visible to the package and all subclasses (protected).</li>
+								</ul>
+								<p style="text-align: justify; color: #767676;">
+									<strong>Non-Access Modifiers</strong> Java provides a number of
+									non-access modifiers to achieve many other functionality
+								</p>
+
+								<ul style="text-align: justify; color: #767676;">
+									<li>The static modifier for creating class methods and
+										variables.</li>
+									<li>The final modifier for finalizing the implementations
+										of classes, methods, and variables.</li>
+									<li>Class objects and various type of array variables come
+										under reference datatype.</li>
+									<li>The abstract modifier for creating abstract classes
+										and methods.</li>
+									<li>The synchronized and volatile modifiers, which are
+										used for threads.</li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+
+					<!--  Data -->
+
+
+
+
+
+
+
+
+
+				</div>
+
+
+
+
 			</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		</div>
 
-
-
-
-	</div>
-	</div>
-
-	<script src="resource/jquery/jquery-3.1.1.min.js"></script>
-	<script src="resource/bootstrap/js/bootstrap.min.js"></script>
-	<script src="otherResource/validation.js"></script>
+		<script src="resource/jquery/jquery-3.1.1.min.js"></script>
+		<script src="resource/bootstrap/js/bootstrap.min.js"></script>
+		<script src="otherResource/validation.js"></script>
 </body>
 </html>

@@ -6,9 +6,9 @@
 	String username = request.getParameter("username");
 
 	if (username == null) {
-%><jsp:forward page="index.jsp?err1=Sorry! Please Login First ! "></jsp:forward>
-<%
-	}
+		response.sendRedirect("index.jsp?err=User already exist ! Try Again");
+	}else{
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +24,8 @@
 	<div class="row">
 		<div class="col-md-8" style="valign: center; align: center;">
 			<br />
-			<form name="qry" method="post" action="executeQry.jsp?username=<%=username%>">
+			<form name="qry" method="post"
+				action="executeQry.jsp?username=<%=username%>">
 				<div class="form-group">
 					<textarea class="form-control" rows="20" name="qryArea"
 						placeholder="Enter Your Querry here ... !"></textarea>
@@ -33,20 +34,20 @@
 					<input type="submit" value="Compile" onclick="return validateQry()"
 						class="btn btn-default">
 				</div>
-				
+
 			</form>
 		</div>
 
 
 		<div class="col-md-4">
 			<br />
-			<div class="form-control">
+			<div class="form-control" style="background-color: #ffefa;">
 				Your Querries History
 				<hr />
-				
+
 
 			</div>
-			<jsp:include page="sqlStore.jsp?username<%=username %>"></jsp:include>
+			<jsp:include page="sqlStore.jsp?username<%=username%>"></jsp:include>
 		</div>
 	</div>
 
@@ -64,3 +65,4 @@
 	<script src="otherResource/validation.js"></script>
 </body>
 </html>
+<%}%>

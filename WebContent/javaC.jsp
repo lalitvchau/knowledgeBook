@@ -5,9 +5,8 @@
 <%
 	String username = request.getParameter("username");
 	if (username == null) {
-%><jsp:forward page="index.jsp?err1=Sorry! Please Login First ! "></jsp:forward>
-<%
-	}
+		response.sendRedirect("index.jsp?err=User already exist ! Try Again");
+	}else{
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +22,11 @@
 	<div class="row">
 		<div class="col-md-8" style="valign: center; align: center;">
 			<br />
-			<form name="cd" method="post" action="executeJava.jsp">
+			<form name="cd" method="post"
+				action="executeJava.jsp?username=<%=username%>">
 				<div class="form-group">
 					<textarea class="form-control" rows="25" name="cdArea"
-					placeholder="Enter Your Code here ... !">
+						placeholder="Enter Your Code here ... !">
 public class Main{
 			public static void main(String[] args){
 			         //call your class or Code here
@@ -37,8 +37,8 @@ public class Main{
 						</textarea>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Compile" onclick="return validateCode()"
-						class="btn btn-default">
+					<input type="submit" value="Compile"
+						onclick="return validateCode()" class="btn btn-default">
 				</div>
 				<div class="form-group">
 					<label class="form-control">Code Result : </label>
@@ -48,11 +48,11 @@ public class Main{
 
 
 		<div class="col-md-4">
-		    <br/>
+			<br />
 			<div class="form-control">
-			    Your Codes History
-				<hr/>
-				<jsp:include page="javaStore.jsp?username<%=username %>"></jsp:include>
+				Your Codes History
+				<hr />
+				<jsp:include page="javaStore.jsp?username<%=username%>"></jsp:include>
 
 			</div>
 		</div>
@@ -72,3 +72,4 @@ public class Main{
 	<script src="otherResource/validation.js"></script>
 </body>
 </html>
+<%} %>

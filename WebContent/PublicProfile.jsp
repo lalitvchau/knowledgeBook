@@ -3,8 +3,9 @@
 
 <%@page import="java.sql.*"%>
 <%
-	String username = request.getParameter("username");
-	if (username == null) {
+	String userId = request.getParameter("userId");
+    String username = request.getParameter("username");
+	if (userId == null||username==null) {
 		response.sendRedirect("index.jsp?err=User already exist ! Try Again");
 	}else{
 %>
@@ -20,41 +21,30 @@
 <link href="resource/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
+    <div class="row">
+		<div class="col-md-12"
+			style="background-color: #FF0061; height: 35px; padding: 5px 5px 5px 25px;">
+			<img src="image/logo.jpg" alt="" style="height: 25px; width: 25px;"><b
+				style="color: white; letter-spacing: 2px;">&nbsp KnowledgeBook </b>
+			
+		</div>
+		
+	</div>
 
 	<div class="row">
 		<div class="col-md-8"
 			style="valign: center; align: center; padding: 10px 50px 50px 50px;">
-
-			<div class="row">
-				<div class="col-md-12"
-					style="valign: center; border-radius: 5px; align: center; padding: 25px 25px 25px 25px; box-shadow: 0px 0px 10px #FF0061; margin: 12px 12px 12px 12px">
-					<form method="post"
-						action="updateStatus.jsp?username=<%=username%>" name="statusForm">
-						<div class="form-group">
-
-							<textarea class="form-control" rows="6" name="status"
-								placeholder="Share your knowledge !"></textarea>
-
-						</div>
-						<button type="submit" class="btn btn-default"
-							onclick="return validateStatus()">Share Knowledge</button>
-					</form>
-
-				</div>
-
-			</div>
-			<br>
+			<a  class="btn btn-danger" href="home.jsp?username=<%=username%>" hidden="hidden">Close</a>
 			<div class="row">
 				<div class="col-md-12" style="valign: center; align: center;">
-					<jsp:include page="statusProfile.jsp"></jsp:include>
+					<jsp:include page="publicStatusProfile.jsp?userId=<%=userId%>"></jsp:include>
 				</div>
 
 			</div>
 
 		</div>
 		<div class="col-md-4" style="valign: center; align: center;">
-             <jsp:include page="profileDetail.jsp"></jsp:include>
+             <jsp:include page="publicProfileDetail.jsp?userId=<%=userId%>"></jsp:include>
 			</div>
 	</div>
 

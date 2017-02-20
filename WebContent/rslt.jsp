@@ -8,9 +8,8 @@
 	String rslt = (String)session.getAttribute("rslt");
 	if(rslt==null) rslt="Someting Wrong !";
 	if (username == null) {
-%><jsp:forward page="index.jsp?err1=Sorry! Please Login First ! "></jsp:forward>
-<%
-	}
+response.sendRedirect("index.jsp?err=User already exist ! Try Again");
+	}else{
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,3 +59,4 @@
 
 </body>
 </html>
+<%} %>
