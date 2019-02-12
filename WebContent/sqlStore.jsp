@@ -1,3 +1,4 @@
+<%@page import="knowledgeBook.DBo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -15,8 +16,7 @@ response.sendRedirect("index.jsp?err=User already exist ! Try Again");
 	try {
 
 		username = request.getParameter("username");
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kdb?user=kdbuser&password=kdbuser");
+		con = DBo.getConnection();
 		ps = con.prepareStatement("select id, qry,qRslt from qryStore where username=? order by id desc");
 
 		//ps.setInt(1,2);

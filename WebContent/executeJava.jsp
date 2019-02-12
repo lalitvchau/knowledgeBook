@@ -1,3 +1,4 @@
+<%@page import="knowledgeBook.DBo"%>
 <%@page import="java.sql.*"%>
 <%@ page import="java.io.*"%>
 <%
@@ -54,8 +55,7 @@
 	PreparedStatement ps1 = null;
 	//inserting data to qryStore table
 	try {
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kdb?user=kdbuser&password=kdbuser");
+		con = DBo.getConnection();
 		ps1 = con.prepareStatement("insert into javaStore(qry,rslt,username) values(?,?,?)");
 		ps1.setString(1, qry);
 		ps1.setString(2, rslt);

@@ -1,3 +1,4 @@
+<%@page import="knowledgeBook.DBo"%>
 <%@page import="java.sql.*"%>
 
 <%
@@ -13,8 +14,7 @@
 
 		username = request.getParameter("username");
 		qry = request.getParameter("qryArea");		
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/userDb?user=kdbuser&password=kdbuser");
+		con = DBo.getConnection();
 		ps = con.createStatement();
 		boolean flag = ps.execute(qry);
 		if (flag == true) {

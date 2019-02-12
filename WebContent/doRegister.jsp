@@ -1,3 +1,4 @@
+<%@page import="knowledgeBook.DBo"%>
 <%@page import="java.sql.*"%>
 
 <%
@@ -13,8 +14,7 @@
 		String name = request.getParameter("name");
 		String gender = request.getParameter("gender");
 
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kdb?user=kdbuser&password=kdbuser");
+		con = DBo.getConnection();
 		ps = con.prepareStatement("insert into users(username,password,name,gender) values(?,?,?,?)");
 
 		//ps.setInt(1,2);

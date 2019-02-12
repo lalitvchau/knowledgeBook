@@ -1,3 +1,4 @@
+<%@page import="knowledgeBook.DBo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -13,8 +14,7 @@
 		try {
 
 			username = request.getParameter("username");
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kdb?user=kdbuser&password=kdbuser");
+			con = DBo.getConnection();
 			ps = con.prepareStatement(
 					"select * from status,users where users.username=status.username order by status.id desc");
 

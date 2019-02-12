@@ -1,3 +1,4 @@
+<%@page import="knowledgeBook.DBo"%>
 <%@page import="java.sql.*"%>
 <%
 	String username = request.getParameter("username");
@@ -12,8 +13,7 @@
 
 		status = request.getParameter("status");
 		if (status != null && !"".equals(status.trim())) {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kdb?user=kdbuser&password=kdbuser");
+			con = DBo.getConnection();
 			ps = con.prepareStatement("insert into  status(sText , username) value(?,?)");
 
 			//ps.setInt(1,2);

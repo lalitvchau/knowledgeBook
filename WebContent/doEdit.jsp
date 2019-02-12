@@ -1,3 +1,4 @@
+<%@page import="knowledgeBook.DBo"%>
 <%@page import="java.sql.*"%>
 <%
 	String username = null;
@@ -9,8 +10,7 @@
 		username = request.getParameter("username").trim();
 		String password = request.getParameter("password").trim();
 
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kdb?user=kdbuser&password=kdbuser");
+		con = DBo.getConnection();
 		ps = con.prepareStatement("select * from users where username=? and password=? ");
 
 		//ps.setInt(1,2);
